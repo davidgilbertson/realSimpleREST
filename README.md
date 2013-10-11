@@ -11,19 +11,19 @@ Accepts an object with the following properties
 
 `method` 'create' | 'read' | 'update' | 'delete'
 
-`id` must be supplied when the method is 'read'
+`id` must be supplied when the method is 'read', it's the ID of the thing you want to read
 
-`modelType` must be supplied when the method isn't read. Defines the endpoint of the URL. e.g. 'user' | 'taskItem'
+`modelType` must be supplied when the method isn't read. This is the thing you're dealing with
 
 `model` the model object
 
-`success` a callback function called when the request completes
+`success` a callback function called when the request completes successfully
 
 #### Example
 ```javascript
 myApp.sync({
 	method: 'create',
-	modelType: 'user',
+	modelType: 'task',
 	model: userModel,
 	callback: function(response) {
 		//do something with the response
