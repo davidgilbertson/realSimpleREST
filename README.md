@@ -15,7 +15,7 @@ Accepts an object with the following properties
 
 `modelType` must be supplied when the method isn't read. This is the thing you're dealing with
 
-`model` the model object
+`model` the model, as a JavaScript object
 
 `success` a callback function called when the request completes successfully
 
@@ -24,12 +24,14 @@ Accepts an object with the following properties
 myApp.sync({
 	method: 'create',
 	modelType: 'task',
-	model: userModel,
+	model: model,
 	callback: function(response) {
 		//do something with the response
 	}
 });
 ```
+
+Note that the file uses JSON, so if you're targeting older (<IE9) browsers, you'll want to include a JSON shim. See testPage.html for an example.
 
 ## Middle
 The .htaccess file takes the URL as created by sync.js, jiggles it about and passes it on to rest.php

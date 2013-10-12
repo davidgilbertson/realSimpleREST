@@ -4,6 +4,4 @@ RewriteCond %{REQUEST_METHOD} GET
 RewriteRule ^rest/(.*?)/(.*?)/?$ rest.php?type=$1&$1=$2 [L]
 
 RewriteCond %{THE_REQUEST} rest/
-#RewriteCond %{REQUEST_METHOD} POST
 RewriteRule ^rest/(.*?)$ rest.php?type=$1
-

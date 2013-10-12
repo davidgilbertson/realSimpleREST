@@ -1,13 +1,17 @@
 <?php
-$dbcon = new PDO('mysql:host=localhost;dbname=<dbname>;charset=utf8', '<username>', '<password>');
+//Uncomment out the below to create a connection. It's only commented so the test page won't fail
+// $dbcon = new PDO('mysql:host=localhost;dbname=<dbname>;charset=utf8', '<username>', '<password>');
 
-//A REST-style setup working with the .htaccess file
-$reqMeth = $_SERVER['REQUEST_METHOD'];
+
+$requestMeth = $_SERVER['REQUEST_METHOD'];
 $requestObj = $_GET['type'];
 
 
-//Routes
-if ($reqMeth === 'GET') {
+/*  -------------------  */
+/*  ----  ROUTING  ----  */
+/*  -------------------  */
+
+if ($requestMeth === 'GET') {
   $requestObj = $_GET['type'];
   $objectValue = $_GET[$requestObj];
   switch ($requestObj) {
@@ -18,7 +22,7 @@ if ($reqMeth === 'GET') {
   }
 }
 
-if ($reqMeth === 'POST') {
+if ($requestMeth === 'POST') {
   $requestObj = $_GET['type'];
   $post_body = file_get_contents('php://input');
   $model = json_decode($post_body, true);
@@ -29,7 +33,7 @@ if ($reqMeth === 'POST') {
     //And so on. One case for each type of model
   }
 }
-if ($reqMeth === 'PUT') {
+if ($requestMeth === 'PUT') {
   $requestObj = $_GET['type'];
   $post_body = file_get_contents('php://input');
   $model = json_decode($post_body, true);
@@ -40,7 +44,7 @@ if ($reqMeth === 'PUT') {
     //And so on. One case for each type of model
   }
 }
-if ($reqMeth === 'DELETE') {
+if ($requestMeth === 'DELETE') {
   $requestObj = $_GET['type'];
   $post_body = file_get_contents('php://input');
   $model = json_decode($post_body, true);
@@ -65,7 +69,7 @@ function getTask($id) {
     //Get the task
 
     $response['success'] = 'Got the task';
-    $response['data'] = $model;
+    $response['data'] = $id;
   } catch (Exception $e) {
     $response['error'] = $e -> getMessage();
   }
@@ -76,8 +80,7 @@ function addTask($model) {
   global $dbcon;
   try {
 
-    //Do what you need to do with the data
-    //Including getting the newly created ID and adding it to the model to return to the client
+    //Add the task
 
     $response['success'] = 'Task created';
     $response['data'] = $model;
@@ -91,8 +94,7 @@ function saveTask($model) {
   global $dbcon;
   try {
 
-    //Do what you need to do with the data
-    //Including getting the newly created ID and adding it to the model to return to the client
+    //Save the task
 
     $response['success'] = 'Task saved';
     $response['data'] = $model;

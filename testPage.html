@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+  <script src="rest.js"></script>
+  <script id="JSON-script"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      color: #444;
+    }
+    #wrapper {
+      width: 450px;
+      height: 200px;
+      margin: 40px auto 0 auto;
+      border: 1px solid #eee;
+      background: white;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    #buttons {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    button {
+      transition: 300ms;
+      width: 100px;
+      height: 30px;
+      border: none;
+      background: cornflowerBlue;
+      color: white;
+    }
+    button:hover {
+      background: white;
+      color: cornflowerBlue;
+    }
+    button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Real Simple REST Test</h1>
+    <div id="buttons">
+      <button onclick="createObj()">Add a task</button>
+      <button id="read" onclick="readObj()">Get a task</button>
+      <button id="update" onclick="updateObj()">Save a task</button>
+      <button id="delete" onclick="deleteObj()">Delete a task</button>
+    </div>
+    <div id="response"></div>
+  </div>
+  <script>
+    if (typeof JSON === 'undefined') {
+      document.getElementById('JSON-script').src = '//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.min.js';
+    }
+    taskModel = {id: 1, name: 'Do someting awesome', dueDate: 'now!'};
+    responseEl = document.getElementById('response');
+    
+    function createObj() {
+      myApp.sync({
+        method: 'create',
+        modelType: 'task',
+        model: taskModel,
+        callback: function(response) {
+          responseEl.innerHTML = 'Response from server: ' + response.success;
+        }
+      });
+    }
+    function readObj() {
+      myApp.sync({
+        method: 'read',
+        modelType: 'task',
+        id: taskModel.id,
+        callback: function(response) {
+          responseEl.innerHTML = 'Response from server: ' + response.success;
+        }
+      });
+    }
+    function updateObj() {
+      myApp.sync({
+        method: 'update',
+        modelType: 'task',
+        model: taskModel,
+        callback: function(response) {
+          responseEl.innerHTML = 'Response from server: ' + response.success;
+        }
+      });
+    }
+    function deleteObj() {
+      myApp.sync({
+        method: 'delete',
+        modelType: 'task',
+        model: taskModel,
+        callback: function(response) {
+          responseEl.innerHTML = 'Response from server: ' + response.success;
+        }
+      });
+    }
+  </script>
+</body>
