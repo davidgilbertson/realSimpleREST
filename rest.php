@@ -2,10 +2,8 @@
 //Uncomment out the below to create a connection. It's only commented so the test page won't fail
 // $dbcon = new PDO('mysql:host=localhost;dbname=<dbname>;charset=utf8', '<username>', '<password>');
 
-
 $requestMeth = $_SERVER['REQUEST_METHOD'];
 $requestObj = $_GET['type'];
-
 
 /*  -------------------  */
 /*  ----  ROUTING  ----  */
@@ -55,8 +53,6 @@ if ($requestMeth === 'DELETE') {
     //And so on. One case for each type of model
   }
 }
-
-
 
 /*  --------------------------  */
 /*  ----  DATA FUNCTIONS  ----  */
@@ -117,28 +113,3 @@ function deleteTask($model) {
   }
   return $response;
 }
-
-
-/*  -----------------------------  */
-/*  ----  UTILITY FUNCTIONS  ----  */
-/*  -----------------------------  */
-
-function getStripped($string) {
-  $result = $string;
-  if (get_magic_quotes_gpc()) {
-    $result = stripslashes($result);
-  }
-  return $result;
-}
-function getStrippedOrBlank($model, $string) {
-  if (array_key_exists($string, $model)) {
-    $result = $model[$string];
-  } else {
-    $result = '';
-  }
-  if (get_magic_quotes_gpc()) {
-    $result = stripslashes($result);
-  }
-  return $result;
-}
-?>

@@ -1,13 +1,13 @@
 # Real Simple REST
 A trio of files to make talking to a server easier.
 
-For the less seasoned coders, think of it as a way to map a function in JavaScript to a function in php without having to worry about all the middle stuff.
+For the less seasoned coders, think of it as a way to map a function in JavaScript to a function in PHP without having to worry about all the middle stuff.
 
-This is for use with Apache/PHP servers. It'll work just fine out of the box, but the code is minimal so it's easy to work it into your project.
+This is for use with Apache/PHP servers. It'll work just fine out of the box, and the code is minimal so it's easy to mash it up and work into your own project.
 
 To get started, put rest.js, rest.php, .htaccess and testPage.html all in the same directory and open testPage.html in your browser.
 
-If you're the inpatient type, you could see it in action at http://kronia.com.au/dev/rest/testPage.html
+If you're the inpatient type, you can see it in action at http://kronia.com.au/dev/rest/testPage.html
 
 
 ## Front End
