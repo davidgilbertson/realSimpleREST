@@ -5,7 +5,9 @@ For the less seasoned coders, think of it as a way to map a function in JavaScri
 
 This is for use with Apache/PHP servers. It'll work just fine out of the box, but the code is minimal so it's easy to work it into your project.
 
-To see it in action, put rest.js, rest.php, .htaccess and testPage.html all in the same directory and open testPage.html in your browser.
+To get started, put rest.js, rest.php, .htaccess and testPage.html all in the same directory and open testPage.html in your browser.
+
+If you're the inpatient type, you could see it in action at http://kronia.com.au/dev/rest/testPage.html
 
 
 ## Front End
